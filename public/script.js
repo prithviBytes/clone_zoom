@@ -11,7 +11,8 @@ const myPeer = new Peer(undefined, {
 
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
-	video: true
+	video: true,
+	audio: true
 }).then(stream => {
 	myVideoStream = stream;
 	addVideoStream(myVideo, stream);
@@ -90,23 +91,23 @@ const html = `<i class="fas fa-video-slash"></i><span>Stop Video</span>`
 document.querySelector(".video__button").innerHTML = html;
 }
 
-// const muteUnmute = () => {
-// 	const enabled = myVideoStream.getAudioTracks()[0].enabled;
-// 	if(enabled){
-// 		myVideoStream.getAudioTracks()[0].enabled = false;
-// 		setUnmuteButton();
-// 	}else{
-// 		setMuteButton();
-// 		myVideoStream.getAudioTracks()[0].enabled = true;
-// 	}
-// }
+const muteUnmute = () => {
+	const enabled = myVideoStream.getAudioTracks()[0].enabled;
+	if(enabled){
+		myVideoStream.getAudioTracks()[0].enabled = false;
+		setUnmuteButton();
+	}else{
+		setMuteButton();
+		myVideoStream.getAudioTracks()[0].enabled = true;
+	}
+}
 
-// const setMuteButton = () => {
-// 	const html = `<i class="fas fa-microphone"></i><span>Mute</span>`
-// 	$(".mute__button").innerHTML = html;
-// }
+const setMuteButton = () => {
+	const html = `<i class="fas fa-microphone"></i><span>Mute</span>`
+	$(".mute__button").innerHTML = html;
+}
 
-// const setUnmuteButton = () => {
-// 	const html = `<i class="stopped fas fa-microphone-slash"></i><span>Unmute</span>`
-// 	$(".mute__button").innerHTML = html;
-// }
+const setUnmuteButton = () => {
+	const html = `<i class="stopped fas fa-microphone-slash"></i><span>Unmute</span>`
+	$(".mute__button").innerHTML = html;
+}
