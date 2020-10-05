@@ -3,6 +3,9 @@ const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 
+var username = prompt("Please enter your name");
+
+
 const myPeer = new Peer(undefined, {
 	path: '/peerjs',
 	host: '/',	
@@ -54,13 +57,16 @@ let text = $('input');
 
 $('html').keypress((e) =>{
 	if(e.which == 13 && text.val().lenght !== 0){
-		socket.emit('message',text.val());
+		socket.emit('message',{
+			message: text.val(),
+			username: username
+		});
 		text.val('');
 	}
 })
 
-socket.on('createMessage', message =>{
-	$("ul").append(`<li class="message"><b>User: </b>${message}</li>`)
+socket.on('createMessage', ({message,username}) =>{
+	$("ul").append(`<li class="message"><b>${username}: </b>${message}</li>`)
 	scrollToBottom();
 	})
 
