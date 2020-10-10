@@ -110,3 +110,73 @@ video {
 .stopped {
 	color:#ea534b;
 }
+
+.input {
+ 	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 1000;
+	
+}
+
+.input__box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #1c1e20;
+    width: 40%;
+    height: 35vh;
+    border-radius: 41px;
+}
+
+.input__box input {
+    display: block;
+    width: 70%;
+    border-bottom: 3px solid transparent;
+    transition: all .4s;
+    font-size: 19px;
+    margin: 40px auto;
+    border-radius: 6px;
+    padding: 10px 15px;
+}
+
+.input__box input:focus {
+    outline: none;
+    border-bottom: 3px solid #128cb8;
+}
+
+.input__label {
+    font-size: 12px;
+    color: #128cb8;
+    display: block;
+    margin-top: -60px;
+    margin-left: 90px;
+	transition: all .3s;
+	opacity: 0;
+  	visibility: hidden;
+}
+
+.input__box input:focus + .input__label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(20px);
+}
+
+.input__button, .input__button:link, .input__button:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    margin-top: 20px;
+    transition: all .3s;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    padding: 11px 29px;
+    border-radius: 10px;
+}

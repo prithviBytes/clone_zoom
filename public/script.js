@@ -3,14 +3,17 @@ const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 
-var username = prompt("Please enter your name");
-
 
 const myPeer = new Peer(undefined, {
 	path: '/peerjs',
 	host: '/',	
 	port: '443'
 })
+var username;
+const getUsername = () => {
+	username = document.querySelector(".input__name").value;
+	document.querySelector(".input").remove();
+}
 
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
@@ -53,9 +56,9 @@ const addVideoStream = (video,stream) => {
 videoGrid.append(video);
 }
 
-let text = $('input');
+let text = $('#chat_message');
 
-$('html').keypress((e) =>{
+$('#chat_message').keypress((e) =>{
 	if(e.which == 13 && text.val().lenght !== 0){
 		socket.emit('message',{
 			message: text.val(),
@@ -118,3 +121,14 @@ const setUnmuteButton = () => {
 const html = `<i class="fas fa-microphone stopped"></i><span>Unmute</span>`
 document.querySelector(".mute__button").innerHTML = html;
 }
+
+const closeConnection = () => {
+	socket.disconnect();
+	videoGrid.innerHTML="";
+	myPeer.destroy();
+	alert("Goodbye");
+}
+
+socket.on('user-disconnected', userId => {
+  if (peers[userId]) peers[userId].close()
+})

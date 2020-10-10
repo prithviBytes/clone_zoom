@@ -28,6 +28,17 @@
 		   </style>
 	</head>
 	<body>
+		<!-- name input design -->
+		<div class="input">
+			<div class="input__box">
+				<input type="text" class="input__name" placeholder="Full Name" id="name" autocomplete="off">
+				<label for="name" class="input__label">Full Name</label>
+				<div style="text-align:center;">
+					<a href="#" class="input__button" onClick="getUsername()">Join Room</a>
+				</div>
+			</div>
+		</div>
+		<!-- Video call design -->
 		<div class="main">
 			<div class="main__left">
 				<div class="main__video">
@@ -60,7 +71,7 @@
 						</div>
 					</div>
 					<div class="main__control__block">
-						<div class="main__control__button leave-meeting">
+						<div onClick="closeConnection()" class="main__control__button leave-meeting">
 							<i class="fas fa-sign-out-alt"></i>
 							<span>Leave Meeting</span>
 						</div>
