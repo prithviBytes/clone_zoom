@@ -1,4 +1,4 @@
-Live version: <a href="https://intense-forest-30530.herokuapp.com/"><b>Zoom Clone</b></a><br>
+Live version: <a href="https://zoom-cloneee.herokuapp.com/"><b>Zoom Clone</b></a><br>
 Welcome,<br>
 Zoom has been a hype for quiet some time now. So wanted to clone it.
 Credit of this project goes to <b><a href="https://www.youtube.com/watch?v=DvlyzDZDEq4">Web Dev Simplified<a/></b>.<br>
